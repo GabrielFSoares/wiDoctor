@@ -1,0 +1,7 @@
+{
+  "name": "wiDoctor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
