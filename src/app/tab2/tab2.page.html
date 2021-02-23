@@ -1,17 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    
+  <ion-img class="py-5 mt-5" src="assets/widoctor.png"></ion-img>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="row ion-text-justify justify-content-center">
+    <p class="text px-5">A partir de um trabalho feito originalmente nos EUA, que nós adaptamos para o Brasil, foi pesquisada a opinião de médicos de diferentes especialidades, onde eles mesmo deram notas em relação a algumas características de suas especialidades.
+    O teste foi montado em cima disso, com um tratamento matemático onde comparamos a importância que você daria para cada um desses itens (ex. ganhos financeiros, tempo livre, status etc.) com as opiniões dos especialistas que participaram da pesquisa.
+    Quanto maior for a semelhança entre suas notas e as notas dadas por aqueles especialistas, mais próximo você está daquela especialidade. Assim, não existe gabarito para o teste, mas sim uma comparação de prioridades.
+    </p>
+    <button class="btn btn-outline-danger" (click)="navigate()">Iniciar Teste</button>
+  </div>
+  
 </ion-content>
