@@ -1,3 +1,17 @@
-<p class="animate__animated animate__fadeInUp animate__delay-1s">
-  teste works!
-</p>
+<ion-content [fullscreen]="true" class="animate__animated animate__fadeInUp animate__delay-1s">
+  <div class="row h-100 align-items-center justify-content-center p-5">
+    <div id="caixa">
+      <p class="m-4">{{p}}</p>
+      <form>
+        <div class="form-group-sm m-4 row justify-content-end">
+          <input type="number" class="form-control form-control-sm" placeholder="0">
+          <input type="button" class="btn btn-outline-danger mt-3" id="voltar" value="Voltar" (click)='voltar()'>
+          <input type="button" class="btn btn-danger mt-3" value="Próximo" (click)='prox()'>
+        </div>
+        <div class="row justify-content-end mx-4">
+          <p>{{n}}/17</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
