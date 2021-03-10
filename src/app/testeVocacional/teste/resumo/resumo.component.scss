@@ -1,0 +1,26 @@
+#caixa {
+    box-shadow: 5px 5px 15px rgba(50, 50, 50, 0.77);
+}
+
+p {
+    font-style: italic;
+}
+
+#voltar {
+    margin-right: auto;
+}
+
+input {
+    min-width: 50px;
+}
+
+table, th, td {
+    border: 1px solid rgba(161, 151, 151, 0.2);
+    border-collapse: collapse;
+    padding: 10px;
+    width: 250px;
+}
+
+#button {
+    border-radius: 20px;
+}
