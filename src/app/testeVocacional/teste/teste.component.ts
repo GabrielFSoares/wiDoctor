@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServeService } from 'src/app/services/serve.service';
 
@@ -33,16 +34,106 @@ export class TesteComponent implements OnInit {
   t:number = this.perguntas.length
   nota:number
   notas = Array<number>()
+  resumo = []
+  fGroup: FormGroup
+  z = [
+    {name: 'Alergia e imunologia', valor: 0},
+    {name: 'Anestesiologia', valor: 0},
+    {name: 'Cardiologia', valor: 0}
+  ]
+
+  notasEspecialidades = [
+    [8.46, 8.77, 8.51, 5.71],
+    [8.07, 8.38, 2.78, 6.42],
+    [8.53, 8.28, 5.8, 9.42]
+  ]
+  
 
   /*
   p: pergunta
   n: número da pergunta
   t: quantidade de perguntas
+  z: resultado e especialidades
   */
 
-  constructor(public router:Router, private serve:ServeService) { }
+  constructor(public router:Router, private serve:ServeService, private fBuilder:FormBuilder) { }
   
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.resumo = [
+      {
+        nome: 'autonomia', valor: 0
+      },
+      {
+        nome: 'tempo de contato direto com o paciente', valor: 1
+      },
+      {
+        nome: 'dependência do paciente', valor: 2
+      },
+      {
+        nome: 'diversidade de patologias', valor: 3
+      },
+      {
+        nome: 'tempo livre', valor: 4
+      },
+      {
+        nome: 'conhecimentos técnicos', valor: 5
+      },
+      {
+        nome: 'ganhos financeiros', valor: 6
+      },
+      {
+        nome: 'criatividade', valor: 7
+      },
+      {
+        nome: 'raciocinio lógico', valor: 8
+      },
+      {
+        nome: 'relacionamento com outros colegas', valor: 9
+      },
+      { 
+        nome: 'habilidade manual', valor:10
+      },
+      {
+        nome: 'estresse', valor: 11
+      },
+      {
+        nome: 'responsabilidade', valor: 12
+      },
+      {
+        nome: 'regularidade de horários', valor: 13
+      },
+      {
+        nome: 'segurança profissional', valor: 14
+      },
+      {
+        nome: 'resultados', valor: 15
+      },
+      {
+        nome: 'status', valor: 16
+      }
+    ]
+
+    this.fGroup = this.fBuilder.group({
+      0: this.notas[0],
+      1: this.notas[1],
+      2: this.notas[2],
+      3: this.notas[3],
+      4: this.notas[4],
+      5: this.notas[5],
+      6: this.notas[6],
+      7: this.notas[7],
+      8: this.notas[8],
+      9: this.notas[9],
+      10: this.notas[10],
+      11: this.notas[11],
+      12: this.notas[12],
+      13: this.notas[13],
+      14: this.notas[14],
+      15: this.notas[15],
+      16: this.notas[16]
+    })
+  }
 
   prox() { 
     if(this.nota === null || this.nota === undefined || this. nota < 0) {
@@ -54,8 +145,9 @@ export class TesteComponent implements OnInit {
     this.notas.push(this.nota)
 
     if(this.n >= 17) {
-      this.serve.postNotas(this.notas)
-      this.router.navigate(['/resumo'])
+      document.getElementById('att').remove()
+      document.getElementById('form').className = "d-block"
+      this.ngOnInit()
     }
 
     this.nota = null
@@ -73,5 +165,29 @@ export class TesteComponent implements OnInit {
       this.router.navigate(['/tabs/tab1']);
     }
   }
+
+  convertArray() {
+    let newNotas = Array<number>()
+    newNotas.push(this.fGroup.value)
+  }
+
+  prosseguir() {
+    for (let i = 0; i < 3; i++) {
+      for(let j = 0; j < 3; j++) {
+        this.z[i].valor += this.fGroup.value[j] - this.notasEspecialidades[i][j]
+      }
+      let convert = this.z[i].valor.toFixed(2)
+      this.z[i].valor = parseFloat(convert)
+    }
+
+    this.z.sort(function(a, b) {
+      return a.valor < b.valor ? -1 : (a.valor > a.valor ? 1 : 0) 
+    })
+    
+    document.getElementById('form').remove()
+    document.getElementById('result').className = "d-block"
+    console.log(this.z)
+  }
+
 
 }

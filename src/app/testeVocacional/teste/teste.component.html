@@ -1,8 +1,8 @@
 <ion-content [fullscreen]="true" class="animate__animated animate__fadeInUp animate__delay-1s">
   <div class="row h-100 align-items-center justify-content-center p-5">
     <div id="caixa">
-      <p class="m-4">{{p}}</p>
-      <form>
+      <div id="att">
+        <p class="m-4">{{p}}</p>
         <div class="form-group-sm m-4 row justify-content-end">
           <input type="number" class="form-control form-control-sm" placeholder="0" name="nota" [(ngModel)]="nota">
           <input type="button" class="btn btn-outline-danger mt-3 px-4 botao" id="voltar" value="Voltar" (click)='voltar()'>
@@ -11,7 +11,30 @@
         <div class="row justify-content-end mx-4">
           <p>{{n}}/{{t}}</p>
         </div>
+      </div>
+
+      <form [formGroup]="fGroup" id="form" class="d-none">
+        <div class="m-4">
+          <table>
+            <tr *ngFor="let r of resumo">
+              <td><p>{{r.nome}}</p></td>
+              <td><input type="number" maxlength="3" class="form-control form-control-sm" formControlName={{r.valor}}></td>
+            </tr>
+            <tr>
+              <td><input id="button" type="button" class="btn btn-outline-danger" (click)="prosseguir()" value="Prosseguir"></td>
+            </tr>
+          </table>          
+        </div>
       </form>
+
+      <div id="result" class="d-none">
+        <table>
+          <tr *ngFor="let r of z">
+            <td>{{r.name}}</td>
+            <td>{{r.valor}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </ion-content>

@@ -1,6 +1,5 @@
 #caixa {
     box-shadow: 5px 5px 15px rgba(50, 50, 50, 0.77);
-   //border-radius: 10px;
 }
 
 p {
@@ -13,4 +12,15 @@ p {
 
 .botao {
     border-radius: 20px;
+}
+
+input {
+    min-width: 50px;
+}
+
+table, th, td {
+    border: 1px solid rgba(161, 151, 151, 0.2);
+    border-collapse: collapse;
+    padding: 10px;
+    width: 250px;
 }

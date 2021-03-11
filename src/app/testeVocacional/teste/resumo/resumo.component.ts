@@ -94,8 +94,29 @@ export class ResumoComponent implements OnInit {
 
   ngOnInit() { }
 
+  convertArray() {
+    let newNotas = Array<number>()
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.tempodecontato)
+    newNotas.push(this.fGroup.value.dependênciapaciente)
+    newNotas.push(this.fGroup.value.diversidade)
+    newNotas.push(this.fGroup.value.tempolivre)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+    newNotas.push(this.fGroup.value.autonomia)
+  }
+
   prosseguir() {
-    
+    console.log(this.fGroup.value.autonomia)
   }
 
 }

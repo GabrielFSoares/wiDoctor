@@ -1,13 +1,12 @@
 <ion-content [fullscreen]="true" class="animate__animated animate__fadeInUp animate__delay-1s">
   <div class="row h-100 align-items-center justify-content-center p-5">
     <div id="caixa">
-      <p class="m-4"></p>
       <form [formGroup]="fGroup">
         <div class="m-4">
           <table>
             <tr *ngFor="let r of resumo">
               <td><p>{{r.nome}}</p></td>
-              <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
+              <td><input type="number" maxlength="3" class="form-control form-control-sm" formControlName={{r.valor}}></td>
             </tr>
             <tr>
               <td><input id="button" type="button" class="btn btn-outline-danger" (click)="prosseguir()" value="Prosseguir"></td>
