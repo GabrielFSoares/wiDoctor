@@ -7,11 +7,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ResumoComponent } from './testeVocacional/teste/resumo/resumo.component';
-import { TesteComponent } from './testeVocacional/teste/teste.component';
+import { TesteComponent } from './teste/teste.component';
 
 @NgModule({
-  declarations: [AppComponent, TesteComponent, ResumoComponent],
+  declarations: [AppComponent, TesteComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],

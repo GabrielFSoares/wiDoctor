@@ -10,6 +10,10 @@ p {
     margin-right: auto;
 }
 
+.botao {
+    border-radius: 20px;
+}
+
 input {
     min-width: 50px;
 }
@@ -21,6 +25,15 @@ table, th, td {
     width: 250px;
 }
 
-#button {
-    border-radius: 20px;
+span, h1 {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#wi {
+    color: #d6271a;
+}
+
+#doc {
+    color: #31275f;
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ResumoComponent } from './testeVocacional/teste/resumo/resumo.component';
-import { TesteComponent } from './testeVocacional/teste/teste.component';
+import { TesteComponent } from './teste/teste.component';
 
 const routes: Routes = [
   {
@@ -11,10 +10,6 @@ const routes: Routes = [
   {
     path: 'teste',
     component: TesteComponent
-  },
-  {
-    path: 'resumo',
-    component: ResumoComponent
   }
 ];
 @NgModule({

@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true" class="animate__animated animate__fadeInUp animate__delay-1s">
-  <div class="row h-100 align-items-center justify-content-center p-5">
+  <div class="row h-100 align-items-center justify-content-center p-5 mt-4">
+    <h1 class="p-4"><span id="wi">WI</span><span id="doc">DOCTOR</span> :: <span class="text-secondary text-uppercase">{{titulo}}</span></h1>
     <div id="caixa">
       <div id="att">
         <p class="m-4">{{p}}</p>
@@ -18,7 +19,7 @@
           <table>
             <tr *ngFor="let r of resumo">
               <td><p>{{r.nome}}</p></td>
-              <td><input type="number" maxlength="3" class="form-control form-control-sm" formControlName={{r.valor}}></td>
+              <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
             </tr>
             <tr>
               <td><input id="button" type="button" class="btn btn-outline-danger" (click)="prosseguir()" value="Prosseguir"></td>
@@ -29,12 +30,17 @@
 
       <div id="result" class="d-none">
         <table>
+          <tr>
+            <td><strong>Especialidade</strong></td>
+            <td><strong>Probalidade de acerto</strong></td>
+          </tr>
           <tr *ngFor="let r of z">
             <td>{{r.name}}</td>
-            <td>{{r.valor}}</td>
+            <td>{{r.valor}}%</td>
           </tr>
         </table>
       </div>
+
     </div>
   </div>
 </ion-content>
