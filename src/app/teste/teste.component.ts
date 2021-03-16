@@ -40,7 +40,40 @@ export class TesteComponent implements OnInit {
   z = [
     {name: 'Alergia e imunologia', valor: 0},
     {name: 'Anestesiologia', valor: 0},
-    {name: 'Cardiologia', valor: 0}
+    {name: 'Cardiologia', valor: 0},
+    {name: 'Cirurgia Geral', valor: 0},
+    {name: 'Ciurgia Plástica', valor: 0},
+    {name: 'Cirurgia Torácica', valor: 0},
+    {name: 'Clínica Médica ', valor: 0},
+    {name: 'Coloproctologia', valor: 0},
+    {name: 'Dermatologia', valor: 0},
+    {name: 'Endocrinologia e metabologia', valor: 0},
+    {name: 'Gastroenterologia', valor: 0},
+    {name: 'Geriatria', valor: 0},
+    {name: 'Ginecologia e Obstetrícia', valor: 0},
+    {name: 'Hematologia e Hemoterapia', valor: 0},
+    {name: 'Infectologia', valor: 0},
+    {name: 'Medicina de Emergência', valor: 0},
+    {name: 'Medicina da Família e Comunidade', valor: 0},
+    {name: 'Medicina do Adolescente', valor: 0},
+    {name: 'Medicina Física e Reabilitação (Fisiatria)', valor: 0},
+    {name: 'Medicina Intensiva (UTI)', valor: 0},
+    {name: 'Medicina Nuclear', valor: 0},
+    {name: 'Medicina Preventiva e Social', valor: 0},
+    {name: 'Nefrologia', valor: 0},
+    {name: 'Neurocirurgia', valor: 0},
+    {name: 'Neurologia', valor: 0},
+    {name: 'Oftalmologia', valor: 0},
+    {name: 'Oncologia Clínica', valor: 0},
+    {name: 'Ortopedia e Traumatologia', valor: 0},
+    {name: 'Otorrinolaringologia', valor: 0},
+    {name: 'Patologia', valor: 0},
+    {name: 'Pediatria', valor: 0},
+    {name: 'Pneumologia', valor: 0},
+    {name: 'Psquiatria', valor: 0},
+    {name: 'Radiologia e Diagnóstico por Imagem', valor: 0},
+    {name: 'Reumatologia', valor: 0},
+    {name: 'Urologia', valor: 0}
   ]
 
   notasEspecialidades = [
@@ -65,7 +98,7 @@ export class TesteComponent implements OnInit {
     [7.85, 8.32, 7.75, 6.90, 7.56, 6.79, 5.46, 6.82, 5.13, 7.37, 4.56, 4.93, 7.86, 6.56, 5.23, 7.65, 4.17],
     [8.04, 7.71, 2.77, 8.30, 2.50, 8.68, 6.34, 7.98, 8.35, 8.30, 8.79, 7.88, 8.44, 5.80, 7.80, 8.80, 8.10],
     [7.40, 4.58, 3.00, 7.23, 6.85, 8.68, 6.62, 8.28, 5.78, 7.38, 5.13, 6.04, 8.47, 6.27, 4.75, 7.00, 5.98],
-    [7.88, 3.54, 5.57, 8.23, 7.63, 6.73, 3.15, 8.21, 6.42, 6.56, 2.48, 5.56, 7.96, 6.95, 5.85, 7.70, 4,44],
+    [7.88, 3.54, 5.57, 8.23, 7.63, 6.73, 3.15, 8.21, 6.42, 6.56, 2.48, 5.56, 7.96, 6.95, 5.85, 7.70, 4.44],
     [7.97, 8.71, 8.55, 7.47, 5.16, 8.71, 6.08, 7.59, 5.82, 7.58, 5.16, 7.63, 8.61, 3.76, 5.19, 8.03, 8.05],
     [7.98, 8.62, 6.60, 6.80, 3.86, 9.32, 7.92, 7.86, 5.77, 6.80, 9.34, 8.90, 9.50, 3.17, 4.94, 8.72, 8.82],
     [8.09, 8.13, 7.70, 7.02, 4.83, 8.35, 5.18, 7.89, 7.09, 7.41, 3.83, 7.09, 8.91, 5.11, 5.54, 7.85, 7.39],
@@ -207,14 +240,16 @@ export class TesteComponent implements OnInit {
   }
 
   prosseguir() {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 36; i++) {
       for(let j = 0; j < 17; j++) {
         this.z[i].valor += Math.abs(this.fGroup.value[j] - this.notasEspecialidades[i][j])
       }
   
+      this.z[i].valor = 100 - this.z[i].valor
       let convert = this.z[i].valor.toFixed(2)
       this.z[i].valor = parseFloat(convert)
-      this.z[i].valor = 100 - this.z[i].valor
+      
+      
     }
 
     this.z.sort(function(a, b) {

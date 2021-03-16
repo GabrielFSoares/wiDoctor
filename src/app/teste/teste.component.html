@@ -1,6 +1,8 @@
 <ion-content [fullscreen]="true" class="animate__animated animate__fadeInUp animate__delay-1s">
   <div class="row h-100 align-items-center justify-content-center p-5 mt-4">
-    <h1 class="p-4"><span id="wi">WI</span><span id="doc">DOCTOR</span> :: <span class="text-secondary text-uppercase">{{titulo}}</span></h1>
+    <div class="col-12">
+      <h1 class="p-4 text-center"><span id="wi">WI</span><span id="doc">DOCTOR</span> :: <span class="text-secondary text-uppercase">{{titulo}}</span></h1>
+    </div>
     <div id="caixa">
       <div id="att">
         <p class="m-4">{{p}}</p>
@@ -16,7 +18,7 @@
 
       <form [formGroup]="fGroup" id="form" class="d-none">
         <div class="m-4">
-          <table>
+          <table class="table table-bordered">
             <tr *ngFor="let r of resumo">
               <td><p>{{r.nome}}</p></td>
               <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
@@ -29,7 +31,7 @@
       </form>
 
       <div id="result" class="d-none">
-        <table>
+        <table class="table table-bordered">
           <tr>
             <td><strong>Especialidade</strong></td>
             <td><strong>Probalidade de acerto</strong></td>
