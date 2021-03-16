@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { ServeService } from 'src/app/services/serve.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { ServeService } from 'src/app/services/serve.service';
 })
 
 export class TesteComponent implements OnInit {
+
+  faRedo = faRedoAlt
   
   perguntas = Array<any>('Autonomia é a capacidade do profissional de resolver seus casos médicos sem depender de outros especialistas. Esta autonomia seria pouco ou muito importante?',
   'Algumas especialidades envolvem um tempo maior de contato direto do médico com o paciente. Você gosta pouco ou muito deste relacionamento direto com o paciente?',
@@ -38,40 +41,40 @@ export class TesteComponent implements OnInit {
   titulo:string = 'Primeiro Passo: dê sua nota'
   fGroup: FormGroup
   z = [
-    {name: 'Alergia e imunologia', valor: 0},
+    {name: 'Alergia', valor: 0},
     {name: 'Anestesiologia', valor: 0},
     {name: 'Cardiologia', valor: 0},
     {name: 'Cirurgia Geral', valor: 0},
     {name: 'Ciurgia Plástica', valor: 0},
     {name: 'Cirurgia Torácica', valor: 0},
     {name: 'Clínica Médica ', valor: 0},
-    {name: 'Coloproctologia', valor: 0},
+    {name: 'Proctologia', valor: 0},
     {name: 'Dermatologia', valor: 0},
-    {name: 'Endocrinologia e metabologia', valor: 0},
+    {name: 'Endocrinologia', valor: 0},
     {name: 'Gastroenterologia', valor: 0},
     {name: 'Geriatria', valor: 0},
-    {name: 'Ginecologia e Obstetrícia', valor: 0},
-    {name: 'Hematologia e Hemoterapia', valor: 0},
+    {name: 'Gineco-Obstetrícia', valor: 0},
+    {name: 'Hematologia', valor: 0},
     {name: 'Infectologia', valor: 0},
-    {name: 'Medicina de Emergência', valor: 0},
-    {name: 'Medicina da Família e Comunidade', valor: 0},
-    {name: 'Medicina do Adolescente', valor: 0},
-    {name: 'Medicina Física e Reabilitação (Fisiatria)', valor: 0},
-    {name: 'Medicina Intensiva (UTI)', valor: 0},
+    {name: 'Emergência', valor: 0},
+    {name: 'Medicina Familiar', valor: 0},
+    {name: 'Medicina Adolescente', valor: 0},
+    {name: 'Fisiatria', valor: 0},
+    {name: 'CTI', valor: 0},
     {name: 'Medicina Nuclear', valor: 0},
-    {name: 'Medicina Preventiva e Social', valor: 0},
+    {name: 'Medicina Preventiva', valor: 0},
     {name: 'Nefrologia', valor: 0},
     {name: 'Neurocirurgia', valor: 0},
     {name: 'Neurologia', valor: 0},
     {name: 'Oftalmologia', valor: 0},
-    {name: 'Oncologia Clínica', valor: 0},
-    {name: 'Ortopedia e Traumatologia', valor: 0},
+    {name: 'Oncologia', valor: 0},
+    {name: 'Ortopedia', valor: 0},
     {name: 'Otorrinolaringologia', valor: 0},
     {name: 'Patologia', valor: 0},
     {name: 'Pediatria', valor: 0},
     {name: 'Pneumologia', valor: 0},
     {name: 'Psquiatria', valor: 0},
-    {name: 'Radiologia e Diagnóstico por Imagem', valor: 0},
+    {name: 'Radiologia', valor: 0},
     {name: 'Reumatologia', valor: 0},
     {name: 'Urologia', valor: 0}
   ]
@@ -212,7 +215,7 @@ export class TesteComponent implements OnInit {
     this.notas.push(this.nota)
 
     if(this.n >= 17) {
-      document.getElementById('att').remove()
+      document.getElementById('quest').className = "d-none"
       document.getElementById('form').className = "d-block"
       this.titulo = 'Segundo passo: análise de coerência'
       this.ngOnInit()
@@ -256,10 +259,28 @@ export class TesteComponent implements OnInit {
       return a.valor > b.valor ? -1 : (a.valor < a.valor ? 1 : 0) 
     })
     
-    document.getElementById('form').remove()
+    document.getElementById('form').className = "d-none"
     document.getElementById('result').className = "d-block"
     this.titulo = 'resultado do teste'
-    console.log(this.z)
+  }
+
+  refazer() {
+    this.router.navigate(['/tabs/tab1'])
+
+    document.getElementById('quest').className = "d-block"
+    document.getElementById('form').className = "d-none"
+    document.getElementById('result').className = "d-none"
+
+    this.p = this.perguntas[0]
+    this.n = 1
+    this.titulo = 'Primeiro Passo: dê sua nota'
+    this.notas = []
+    this.nota = null
+
+    for(let i = 0; i < this.z.length; i++) {
+      this.z[i].valor = 0
+    }
+    
   }
 
 

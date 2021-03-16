@@ -1,5 +1,5 @@
 #caixa {
-    box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.77);
+    box-shadow: 4px 4px 6px rgba(50, 50, 50, 0.77);
 }
 
 p {
@@ -29,4 +29,8 @@ span, h1 {
 
 #doc, tr {
     color: #31275f;
+}
+
+td {
+    max-width: 160px;
 }

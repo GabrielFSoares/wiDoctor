@@ -4,7 +4,7 @@
       <h1 class="p-4 text-center"><span id="wi">WI</span><span id="doc">DOCTOR</span> :: <span class="text-secondary text-uppercase">{{titulo}}</span></h1>
     </div>
     <div id="caixa">
-      <div id="att">
+      <div id="quest">
         <p class="m-4">{{p}}</p>
         <div class="form-group-sm m-4 row justify-content-end">
           <input type="number" class="form-control form-control-sm" placeholder="0" name="nota" [(ngModel)]="nota">
@@ -22,27 +22,27 @@
             <tr *ngFor="let r of resumo">
               <td><p>{{r.nome}}</p></td>
               <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
-            </tr>
-            <tr>
-              <td><input id="button" type="button" class="btn btn-outline-danger" (click)="prosseguir()" value="Prosseguir"></td>
-            </tr>
+            </tr>           
           </table>          
+          <input id="button" type="button" class="btn btn-outline-danger botao" (click)="prosseguir()" value="Prosseguir">
         </div>
       </form>
 
       <div id="result" class="d-none">
-        <table class="table table-bordered">
-          <tr>
-            <td><strong>Especialidade</strong></td>
-            <td><strong>Probalidade de acerto</strong></td>
-          </tr>
-          <tr *ngFor="let r of z">
-            <td>{{r.name}}</td>
-            <td>{{r.valor}}%</td>
-          </tr>
-        </table>
+        <div class="m-4">
+          <table class="table table-bordered">
+            <tr>
+              <td><strong>Especialidade</strong></td>
+              <td><strong>Probalidade de acerto</strong></td>
+            </tr>
+            <tr *ngFor="let r of z">
+              <td>{{r.name}}</td>
+              <td>{{r.valor}}%</td>
+            </tr>
+          </table>
+          <button class="btn btn-outline-danger botao" (click)="refazer()"><fa-icon [icon]="faRedo"></fa-icon> Refazer</button>
+        </div>
       </div>
-
     </div>
   </div>
 </ion-content>
