@@ -1,5 +1,6 @@
 #caixa {
-    box-shadow: 4px 4px 6px rgba(50, 50, 50, 0.77);
+    box-shadow: 5px 5px 8px rgba(50, 50, 50, 0.5);
+    border-radius: 10px;
 }
 
 p {
@@ -15,7 +16,7 @@ p {
 }
 
 input {
-    min-width: 50px;
+    min-width: 50px
 }
 
 span, h1 {

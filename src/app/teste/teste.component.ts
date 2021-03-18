@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { ServeService } from 'src/app/services/serve.service';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-teste',
@@ -11,6 +12,9 @@ import { ServeService } from 'src/app/services/serve.service';
 })
 
 export class TesteComponent implements OnInit {
+
+  @ViewChild(IonContent, { static: false }) content: IonContent;
+  dummyList: any;
 
   faRedo = faRedoAlt
   
@@ -126,9 +130,14 @@ export class TesteComponent implements OnInit {
   z: resultado e especialidades
   */
 
-  constructor(public router:Router, private serve:ServeService, private fBuilder:FormBuilder) { }
+  constructor(public router:Router, private serve:ServeService, private fBuilder:FormBuilder) {
+    this.formbuilder()
+   }
   
   ngOnInit() {
+    document.getElementById('quest').className = "d-block"
+    document.getElementById('form').className = "d-none"
+    document.getElementById('result').className = "d-none" 
 
     this.resumo = [
       {
@@ -183,7 +192,9 @@ export class TesteComponent implements OnInit {
         nome: 'status', valor: 16
       }
     ]
+  }
 
+  formbuilder() {
     this.fGroup = this.fBuilder.group({
       0: this.notas[0],
       1: this.notas[1],
@@ -218,7 +229,7 @@ export class TesteComponent implements OnInit {
       document.getElementById('quest').className = "d-none"
       document.getElementById('form').className = "d-block"
       this.titulo = 'Segundo passo: análise de coerência'
-      this.ngOnInit()
+      this.formbuilder()
     }
 
     this.nota = null
@@ -252,7 +263,6 @@ export class TesteComponent implements OnInit {
       let convert = this.z[i].valor.toFixed(2)
       this.z[i].valor = parseFloat(convert)
       
-      
     }
 
     this.z.sort(function(a, b) {
@@ -262,15 +272,11 @@ export class TesteComponent implements OnInit {
     document.getElementById('form').className = "d-none"
     document.getElementById('result').className = "d-block"
     this.titulo = 'resultado do teste'
+    this.content.scrollToTop(500)
   }
 
   refazer() {
     this.router.navigate(['/tabs/tab1'])
-
-    document.getElementById('quest').className = "d-block"
-    document.getElementById('form').className = "d-none"
-    document.getElementById('result').className = "d-none"
-
     this.p = this.perguntas[0]
     this.n = 1
     this.titulo = 'Primeiro Passo: dê sua nota'
@@ -280,8 +286,6 @@ export class TesteComponent implements OnInit {
     for(let i = 0; i < this.z.length; i++) {
       this.z[i].valor = 0
     }
-    
   }
-
 
 }
