@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServeService } from '../services/serve.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page {
 
-  constructor(public router:Router) {}
+  constructor(private serve:ServeService, public router:Router) {}
 
   navigate() {
     this.router.navigate(['/tabs/tab1']);
+    this.serve.alteraMenu('edit')
   }
 
 }
