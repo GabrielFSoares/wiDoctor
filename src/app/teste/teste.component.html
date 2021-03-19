@@ -6,10 +6,10 @@
     <div id="caixa">
       <div id="quest">
         <p class="m-4">{{p}}</p>
-        <div class="form-group-sm m-4 row justify-content-end">
+        <div class="form-group-sm m-4 row">
           <input type="number" class="form-control form-control-sm" placeholder="0" name="nota" [(ngModel)]="nota">
-          <input type="button" class="btn btn-outline-danger mt-3 px-4 botao" id="voltar" value="Voltar" (click)='voltar()'>
-          <input type="button" class="btn btn-danger mt-3 px-4 botao" value="Próximo" (click)='prox()'>
+          <input type="button" class="btn btn-outline-danger mt-3 px-4 botao" value="Voltar" (click)='voltar()'>
+          <input type="button" class="btn btn-danger mt-3 px-4 botao" id="prox" value="Próximo" (click)='prox()'>
         </div>
         <div class="row justify-content-end mx-4">
           <p>{{n}}/{{t}}</p>
@@ -40,7 +40,10 @@
               <td>{{r.valor}}%</td>
             </tr>
           </table>
-          <button class="btn btn-outline-danger botao" (click)="refazer()"><fa-icon [icon]="faRedo"></fa-icon> Refazer</button>
+          <div class="row px-4">
+            <button class="btn btn-outline-danger botao" (click)="refazer()"><fa-icon [icon]="faRedo"></fa-icon> Refazer</button>
+            <button id="finalizar" class="btn btn-danger botao" (click)="finalizar()">Finalizar</button>
+          </div>
         </div>
       </div>
     </div>

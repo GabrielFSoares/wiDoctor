@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
-import { ServeService } from 'src/app/services/serve.service';
-import { IonContent } from '@ionic/angular';
+import { AlertController, IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-teste',
@@ -44,6 +43,7 @@ export class TesteComponent implements OnInit {
   resumo = []
   titulo:string = 'Primeiro Passo: dê sua nota'
   fGroup: FormGroup
+  storage = 0
   z = [
     {name: 'Alergia', valor: 0},
     {name: 'Anestesiologia', valor: 0},
@@ -130,11 +130,13 @@ export class TesteComponent implements OnInit {
   z: resultado e especialidades
   */
 
-  constructor(public router:Router, private serve:ServeService, private fBuilder:FormBuilder) {
+  constructor(public router:Router, public alertController: AlertController, private fBuilder:FormBuilder) {
     this.formbuilder()
    }
   
   ngOnInit() {
+
+    this.presentAlert('Responda às perguntas a seguir com a maior sinceridade possível, dando notas de zero a dez para sua resposta. Para maior precisão use notas com duas casas decimais.', 'Exemplo: 7.53')
     document.getElementById('quest').className = "d-block"
     document.getElementById('form').className = "d-none"
     document.getElementById('result').className = "d-none" 
@@ -216,6 +218,17 @@ export class TesteComponent implements OnInit {
     })
   }
 
+  async presentAlert(header, message) {
+    const alert = await this.alertController.create({
+      cssClass: 'custom-alert',
+      message:'<p><strong>'+header+'</strong></p>' + '<p>'+message+'</p>',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
   prox() { 
     if(this.nota === null || this.nota === undefined || this. nota < 0) {
       this.nota = 0
@@ -224,12 +237,15 @@ export class TesteComponent implements OnInit {
     }
 
     this.notas.push(this.nota)
+    this.storage++
+    window.localStorage['teste'] = this.storage
 
     if(this.n >= 17) {
       document.getElementById('quest').className = "d-none"
       document.getElementById('form').className = "d-block"
       this.titulo = 'Segundo passo: análise de coerência'
       this.formbuilder()
+      this.presentAlert('Analise a ordem criada de acordo com as notas que você atribuiu a cada um dos itens e verifique se existe coerência entre elas.', 'Se necessário modifique as notas procurando atingir uma maior coerência. Evite notas iguais para itens diferentes.')
     }
 
     this.nota = null
@@ -246,11 +262,6 @@ export class TesteComponent implements OnInit {
     } else {
       this.router.navigate(['/tabs/tab1']);
     }
-  }
-
-  convertArray() {
-    let newNotas = Array<number>()
-    newNotas.push(this.fGroup.value)
   }
 
   prosseguir() {
@@ -273,6 +284,8 @@ export class TesteComponent implements OnInit {
     document.getElementById('result').className = "d-block"
     this.titulo = 'resultado do teste'
     this.content.scrollToTop(500)
+
+    this.presentAlert('A relação a seguir mostra em ordem decrescente as especialidades que mais se aproximaram de seus principios comportamentais.', 'Esperamos que esta relação possa auxiliá-lo em uma escolha racional da sua futura especialidade.')
   }
 
   refazer() {
@@ -288,4 +301,7 @@ export class TesteComponent implements OnInit {
     }
   }
 
+  finalizar() {
+    this.router.navigate(['/tabs/tab2'])
+  }
 }

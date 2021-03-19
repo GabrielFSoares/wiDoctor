@@ -21,6 +21,10 @@ export class TabsPage {
     let home = document.getElementById('home')
     let edit = document.getElementById('edit')
     this.serve.postMenu(histo, home, edit)
+
+    if(window.location.pathname.toString() == '/tabs/tab1') {
+      this.selectMenu('edit')
+    }
   }
 
   selectMenu(nome) {
