@@ -43,7 +43,7 @@ export class TesteComponent implements OnInit {
   resumo = []
   titulo:string = 'Primeiro Passo: dê sua nota'
   fGroup: FormGroup
-  storage = 0
+  idStorage = window.localStorage['id']
   z = [
     {name: 'Alergia', valor: 0},
     {name: 'Anestesiologia', valor: 0},
@@ -237,8 +237,8 @@ export class TesteComponent implements OnInit {
     }
 
     this.notas.push(this.nota)
-    this.storage++
-    window.localStorage['teste'] = this.storage
+    //this.storage++
+    //window.localStorage['teste'] = this.storage
 
     if(this.n >= 17) {
       document.getElementById('quest').className = "d-none"
@@ -284,6 +284,16 @@ export class TesteComponent implements OnInit {
     document.getElementById('result').className = "d-block"
     this.titulo = 'resultado do teste'
     this.content.scrollToTop(500)
+
+    if(this.idStorage >= 3) {
+      window.localStorage.setItem('teste0', window.localStorage.getItem('teste1'))
+      window.localStorage.setItem('teste1', window.localStorage.getItem('teste2'))
+      window.localStorage.setItem('teste2', JSON.stringify(this.z))
+    } else {
+      window.localStorage.setItem('teste' + this.idStorage, JSON.stringify(this.z))
+      this.idStorage++
+      window.localStorage.setItem('id', this.idStorage)
+    }
 
     this.presentAlert('A relação a seguir mostra em ordem decrescente as especialidades que mais se aproximaram de seus principios comportamentais.', 'Esperamos que esta relação possa auxiliá-lo em uma escolha racional da sua futura especialidade.')
   }

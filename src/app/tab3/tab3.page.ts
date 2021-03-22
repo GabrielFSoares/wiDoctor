@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
+  z = []
+
   constructor() {}
 
+  ngOnInit() {
+    this.z[0] = JSON.parse(window.localStorage.getItem('teste0'))
+    this.z[1] = JSON.parse(window.localStorage.getItem('teste1'))
+    console.log(this.z)
+  }
 }

@@ -25,6 +25,11 @@ export class TabsPage {
     if(window.location.pathname.toString() == '/tabs/tab1') {
       this.selectMenu('edit')
     }
+
+    if(!window.localStorage.getItem('id')) {
+      window.localStorage.setItem('id', '0')
+    }
+    
   }
 
   selectMenu(nome) {

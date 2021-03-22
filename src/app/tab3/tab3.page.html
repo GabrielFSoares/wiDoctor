@@ -4,4 +4,17 @@
     <h1>Histórico</h1>
   </div>
 
+  <div>
+    <table class="table table-bordered">
+      <tr>
+        <td><strong>Especialidade</strong></td>
+        <td><strong>Probalidade de acerto</strong></td>
+      </tr>
+      <tr *ngFor="let r of z">
+        <td>{{r[0].name}}</td>
+        <td>{{r[0].valor}}%</td>
+      </tr>
+    </table>
+  </div>
+
 </ion-content>
