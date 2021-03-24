@@ -5,16 +5,36 @@
   </div>
 
   <div>
-    <table class="table table-bordered">
-      <tr>
-        <td><strong>Especialidade</strong></td>
-        <td><strong>Probalidade de acerto</strong></td>
-      </tr>
-      <tr *ngFor="let r of z">
-        <td>{{r[0].name}}</td>
-        <td>{{r[0].valor}}%</td>
-      </tr>
-    </table>
+    <ion-card *ngFor="let c of card.slice().reverse(); let i">
+      <ion-card-header>
+        <p>{{c[0].titulo}}</p>
+      </ion-card-header>
+      <ion-card-content>
+        <table class="table table-borderless">
+          <tr>
+            <td><strong>Especialidade</strong></td>
+            <td><strong>Probalidade de acerto</strong></td>
+          </tr>
+          <tr>
+            <td>{{c[0].teste[0].name}}</td>
+            <td>{{c[0].teste[0].valor}}%</td>
+          </tr>
+        </table>
+        <div class="row">
+          <div class="col-4">
+            <h6 class="h1" style="font-size: 30px">...</h6>
+          </div>
+          <div class="col-8 row justify-content-end">
+            <button class="btn btn-outline-danger">Visualizar</button>
+            <button class="btn btn-danger ml-1" (click)="deleteAlert(i)"><ion-icon name="trash"></ion-icon></button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <div class="row justify-content-center mb-4">
+      <button class="btn d-none" id="clean" (click)="cleanAlert()">Limpar Histórico</button>
+      <p id="texto" class="text-secondary">Não há dados . . .</p>
+    </div>
   </div>
 
 </ion-content>

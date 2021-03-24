@@ -267,6 +267,8 @@ export class TesteComponent implements OnInit {
   prosseguir() {
     for (let i = 0; i < 36; i++) {
       for(let j = 0; j < 17; j++) {
+        this.fGroup.value[j] < 0 ? this.fGroup.value[j] = 0: null
+        this.fGroup.value[j] > 10 ? this.fGroup.value[j] = 10: null
         this.z[i].valor += Math.abs(this.fGroup.value[j] - this.notasEspecialidades[i][j])
       }
   
@@ -285,10 +287,12 @@ export class TesteComponent implements OnInit {
     this.titulo = 'resultado do teste'
     this.content.scrollToTop(500)
 
-    if(this.idStorage >= 3) {
+    if(this.idStorage >= 5) {
       window.localStorage.setItem('teste0', window.localStorage.getItem('teste1'))
       window.localStorage.setItem('teste1', window.localStorage.getItem('teste2'))
-      window.localStorage.setItem('teste2', JSON.stringify(this.z))
+      window.localStorage.setItem('teste2', window.localStorage.getItem('teste3'))
+      window.localStorage.setItem('teste3', window.localStorage.getItem('teste4'))
+      window.localStorage.setItem('teste4', JSON.stringify(this.z))
     } else {
       window.localStorage.setItem('teste' + this.idStorage, JSON.stringify(this.z))
       this.idStorage++

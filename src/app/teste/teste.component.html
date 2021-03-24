@@ -18,7 +18,7 @@
 
       <form [formGroup]="fGroup" id="form" class="d-none">
         <div class="m-4">
-          <table class="table table-bordered">
+          <table class="table">
             <tr *ngFor="let r of resumo">
               <td><p>{{r.nome}}</p></td>
               <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
@@ -30,7 +30,7 @@
 
       <div id="result" class="d-none">
         <div class="m-4">
-          <table class="table table-bordered">
+          <table class="table">
             <tr>
               <td><strong>Especialidade</strong></td>
               <td><strong>Probalidade de acerto</strong></td>
