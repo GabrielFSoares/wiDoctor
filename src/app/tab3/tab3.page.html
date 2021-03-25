@@ -4,8 +4,8 @@
     <h1>Histórico</h1>
   </div>
 
-  <div>
-    <ion-card *ngFor="let c of card.slice().reverse(); let i">
+  <div id="histo">
+    <ion-card *ngFor="let c of card.slice().reverse(); let i;">
       <ion-card-header>
         <p>{{c[0].titulo}}</p>
       </ion-card-header>
@@ -25,7 +25,7 @@
             <h6 class="h1" style="font-size: 30px">...</h6>
           </div>
           <div class="col-8 row justify-content-end">
-            <button class="btn btn-outline-danger">Visualizar</button>
+            <button class="btn btn-outline-danger" (click)="visualizar(i)">Visualizar</button>
             <button class="btn btn-danger ml-1" (click)="deleteAlert(i)"><ion-icon name="trash"></ion-icon></button>
           </div>
         </div>
@@ -35,6 +35,27 @@
       <button class="btn d-none" id="clean" (click)="cleanAlert()">Limpar Histórico</button>
       <p id="texto" class="text-secondary">Não há dados . . .</p>
     </div>
+  </div>
+
+  <div id="oneHisto" class="d-none">
+    <ion-card>
+      <div id="tabela">
+        <table class="table">
+          <tr>
+            <td><strong>Especialidade</strong></td>
+            <td><strong>Probalidade de acerto</strong></td>
+          </tr>
+          <tr *ngFor="let c of cardHisto">
+            <td>{{c.name}}</td>
+            <td>{{c.valor}}%</td>
+          </tr>
+        </table>
+      </div>
+      <div class="m-4">
+        <button class="btn btn-outline-danger" (click)="voltar()">Voltar</button>
+        <button class="btn btn-danger ml-1" (click)="imprimir()"><ion-icon name="print-sharp"></ion-icon></button>
+      </div>
+    </ion-card>
   </div>
 
 </ion-content>

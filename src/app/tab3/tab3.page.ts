@@ -10,6 +10,7 @@ export class Tab3Page {
 
   card = []
   idTeste = window.localStorage.length - 1
+  cardHisto = []
 
   constructor(public alertController: AlertController) {}
 
@@ -19,11 +20,25 @@ export class Tab3Page {
         titulo: 'Teste ' + (i+1), teste: JSON.parse(window.localStorage.getItem('teste' + i)) 
       }]
     }  
-    
+    //console.log(this.card[0][0].teste)
+
     if(window.localStorage.getItem('id') !== '0' ) {
       document.getElementById('clean').className = 'btn d-block'
       document.getElementById('texto').className = 'text-secondary d-none'
     }
+  }
+
+  visualizar(id) {
+    document.getElementById('histo').className = "d-none"
+    document.getElementById('oneHisto').className = "d-block"
+
+    this.cardHisto = id[0].teste
+    console.log(this.cardHisto)
+  }
+
+  voltar() {
+    document.getElementById('histo').className = "d-block"
+    document.getElementById('oneHisto').className = "d-none"
   }
 
   delete(id) {
@@ -45,6 +60,10 @@ export class Tab3Page {
     let idStorage = parseInt(window.localStorage.getItem('id')) - 1
     window.localStorage.setItem('id', idStorage.toString())
     window.location.reload()
+  }
+
+  imprimir() {
+    
   }
 
   async deleteAlert(id) {
