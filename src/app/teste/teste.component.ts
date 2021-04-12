@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faRedoAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { AlertController, IonContent } from '@ionic/angular';
 
 @Component({
@@ -16,6 +16,7 @@ export class TesteComponent implements OnInit {
   dummyList: any;
 
   faRedo = faRedoAlt
+  faShare = faShareAlt
   
   perguntas = Array<any>('Autonomia é a capacidade do profissional de resolver seus casos médicos sem depender de outros especialistas. Esta autonomia seria pouco ou muito importante?',
   'Algumas especialidades envolvem um tempo maior de contato direto do médico com o paciente. Você gosta pouco ou muito deste relacionamento direto com o paciente?',
@@ -317,5 +318,9 @@ export class TesteComponent implements OnInit {
 
   finalizar() {
     this.router.navigate(['/tabs/tab2'])
+  }
+
+  share() {
+    console.log("Compartilhar")
   }
 }

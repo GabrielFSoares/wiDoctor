@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { faShareAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tab3',
@@ -8,6 +9,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page {
 
+  faTrash = faTrash
+  faShare = faShareAlt
   card = []
   idTeste = window.localStorage.length - 1
   cardHisto = []
@@ -62,8 +65,8 @@ export class Tab3Page {
     window.location.reload()
   }
 
-  imprimir() {
-    
+  share() {
+    console.log('Share')
   }
 
   async deleteAlert(id) {

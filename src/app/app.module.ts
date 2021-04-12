@@ -9,10 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TesteComponent } from './teste/teste.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Tab3Page } from './tab3/tab3.page';
 
 @NgModule({
-  declarations: [AppComponent, TesteComponent, Tab3Page],
+  declarations: [AppComponent, TesteComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],

@@ -26,7 +26,7 @@
           </div>
           <div class="col-8 row justify-content-end">
             <button class="btn btn-outline-danger" (click)="visualizar(i)">Visualizar</button>
-            <button class="btn btn-danger ml-1" (click)="deleteAlert(i)"><ion-icon name="trash"></ion-icon></button>
+            <button class="btn btn-danger ml-2" (click)="deleteAlert(i)"><fa-icon [icon]="faTrash"></fa-icon></button>
           </div>
         </div>
       </ion-card-content>
@@ -51,9 +51,11 @@
           </tr>
         </table>
       </div>
-      <div class="m-4">
+      <div class="row justify-content-center m-4">
         <button class="btn btn-outline-danger" (click)="voltar()">Voltar</button>
-        <button class="btn btn-danger ml-1" (click)="imprimir()"><ion-icon name="print-sharp"></ion-icon></button>
+        <button class="btn btn-danger ml-5" (click)="share()">
+          <fa-icon [icon]="faShare"></fa-icon>
+        </button>
       </div>
     </ion-card>
   </div>
