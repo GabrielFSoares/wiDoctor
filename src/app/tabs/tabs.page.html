@@ -1,17 +1,18 @@
 <ion-tabs>
+  <div class="animate__animated animate__slideInUp">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="tab1" (click)="selectMenu('edit')">
+        <fa-icon class="fa-2x text-secondary" [icon]="faEdit" id="edit"></fa-icon>
+      </ion-tab-button>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1" (click)="selectMenu('edit')">
-      <fa-icon class="fa-2x text-secondary" [icon]="faEdit" id="edit"></fa-icon>
-    </ion-tab-button>
+      <ion-tab-button tab="tab2" (click)="selectMenu('home')">
+        <fa-icon class="fa-2x text-danger" [icon]="faHome" id="home"></fa-icon>
+      </ion-tab-button>
 
-    <ion-tab-button tab="tab2" (click)="selectMenu('home')">
-      <fa-icon class="fa-2x text-danger" [icon]="faHome" id="home"></fa-icon>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab3" (click)="selectMenu('histo')">
-      <fa-icon class="fa-2x text-secondary" [icon]="faHistory" id="histo"></fa-icon>
-    </ion-tab-button>
-  </ion-tab-bar>
+      <ion-tab-button tab="tab3" (click)="selectMenu('histo')">
+        <fa-icon class="fa-2x text-secondary" [icon]="faHistory" id="histo"></fa-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
 
 </ion-tabs>
