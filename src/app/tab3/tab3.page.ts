@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { faShareAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-tab3',
@@ -15,7 +19,7 @@ export class Tab3Page {
   idTeste = window.localStorage.length - 1
   cardHisto = []
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController, private socialSharing: SocialSharing) {}
 
   ngOnInit() {
     for(let i = 0; i < parseInt(window.localStorage.getItem('id')); i++ ){
@@ -36,6 +40,7 @@ export class Tab3Page {
     document.getElementById('oneHisto').className = "d-block"
 
     this.cardHisto = id[0].teste
+
     console.log(this.cardHisto)
   }
 
@@ -66,7 +71,32 @@ export class Tab3Page {
   }
 
   share() {
-    console.log('Share')
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    let pdfDefinition = {
+      content: [{
+        table: {
+          body: [
+            ['Especialidade', 'Probabilidade de Acerto'],
+            ['', '']
+          ]
+        }
+      }]
+    }
+
+    /*for(let i = 1; i<30; i++) {
+      for(let j = 0; j<1; j++) {
+        pdfDefinition.content[0].table.body[i][j] = this.cardHisto[i].name 
+        pdfDefinition.content[0].table.body[i][j+1] = this.cardHisto[i].valor
+      }
+    }*/
+
+    pdfMake.createPdf(pdfDefinition).open()
+
+    this.socialSharing.share('this.pdf')
+
+    pdfDefinition.content[0].table.body[1][1] = 'teste'
+    console.log(pdfDefinition.content[0].table.body[1][1])
   }
 
   async deleteAlert(id) {

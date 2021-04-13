@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faRedoAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AlertController, IonContent } from '@ionic/angular';
 
 @Component({
@@ -131,7 +132,7 @@ export class TesteComponent implements OnInit {
   z: resultado e especialidades
   */
 
-  constructor(public router:Router, public alertController: AlertController, private fBuilder:FormBuilder) {
+  constructor(public router:Router, public alertController: AlertController, private fBuilder:FormBuilder, private socialSharing: SocialSharing) {
     this.formbuilder()
    }
   
@@ -321,6 +322,6 @@ export class TesteComponent implements OnInit {
   }
 
   share() {
-    console.log("Compartilhar")
+    this.socialSharing.share('pdf')
   }
 }
