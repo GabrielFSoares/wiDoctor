@@ -75,28 +75,37 @@ export class Tab3Page {
 
     let pdfDefinition = {
       content: [{
+        style: 'pdf',
         table: {
+          widths: ['*', 'auto'],
           body: [
             ['Especialidade', 'Probabilidade de Acerto'],
-            ['', '']
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['','']
           ]
         }
-      }]
+      }],
+      styles: {
+        pdf: {
+			    margin: [0, 0, 0, 0]
+        }
+      }
     }
 
-    /*for(let i = 1; i<30; i++) {
+    for(let i = 1; i<=36; i++) {
       for(let j = 0; j<1; j++) {
-        pdfDefinition.content[0].table.body[i][j] = this.cardHisto[i].name 
-        pdfDefinition.content[0].table.body[i][j+1] = this.cardHisto[i].valor
+        pdfDefinition.content[0].table.body[i][j] = this.cardHisto[i-1].name 
+        pdfDefinition.content[0].table.body[i][j+1] = this.cardHisto[i-1].valor
       }
-    }*/
+    }
 
-    pdfMake.createPdf(pdfDefinition).open()
+    //pdfMake.createPdf(pdfDefinition).open()
 
-    this.socialSharing.share('this.pdf')
+    let pdf = pdfMake.createPdf(pdfDefinition)
 
-    pdfDefinition.content[0].table.body[1][1] = 'teste'
-    console.log(pdfDefinition.content[0].table.body[1][1])
+    this.socialSharing.share(pdf)
+
   }
 
   async deleteAlert(id) {
