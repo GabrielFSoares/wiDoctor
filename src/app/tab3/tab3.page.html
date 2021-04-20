@@ -33,7 +33,7 @@
     </ion-card>
     <div class="row justify-content-center mb-4">
       <button class="btn d-none" id="clean" (click)="cleanAlert()">Limpar Histórico</button>
-      <p id="texto" class="text-secondary">Não há dados . . .</p>
+      <p id="texto" class="text-secondary">Histórico vazio</p>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
       <div class="row justify-content-center m-4">
         <button class="btn btn-outline-danger" (click)="voltar()">Voltar</button>
         <button class="btn btn-danger ml-5" (click)="share()">
-          <fa-icon [icon]="faShare"></fa-icon>
+          <fa-icon [icon]="faShare"></fa-icon>Share
         </button>
       </div>
     </ion-card>

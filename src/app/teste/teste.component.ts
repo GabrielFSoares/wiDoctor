@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { faRedoAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AlertController, IonContent } from '@ionic/angular';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-teste',
@@ -322,6 +325,38 @@ export class TesteComponent implements OnInit {
   }
 
   share() {
-    this.socialSharing.share('pdf')
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    let pdfDefinition = {
+      content: [{
+        style: 'pdf',
+        table: {
+          widths: ['*', 'auto'],
+          body: [
+            ['Especialidade', 'Probabilidade de Acerto'],
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],
+            ['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['','']
+          ]
+        }
+      }],
+      styles: {
+        pdf: {
+			    margin: [0, 0, 0, 0]
+        }
+      }
+    }
+
+    for(let i = 1; i<=36; i++) {
+      for(let j = 0; j<1; j++) {
+        pdfDefinition.content[0].table.body[i][j] = this.z[i-1].name 
+        pdfDefinition.content[0].table.body[i][j+1] = this.z[i-1].valor.toString()
+      }
+    }
+
+    let pdf = pdfMake.createPdf(pdfDefinition)
+
+    this.socialSharing.share(pdf.open())
+
   }
 }

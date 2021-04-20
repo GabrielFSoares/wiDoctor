@@ -100,9 +100,7 @@ export class Tab3Page {
       }
     }
 
-    //pdfMake.createPdf(pdfDefinition).open()
-
-    let pdf = pdfMake.createPdf(pdfDefinition)
+    let pdf = pdfMake.createPdf(pdfDefinition).open()
 
     this.socialSharing.share(pdf)
 
