@@ -24,7 +24,7 @@
               <td><input type="number" class="form-control form-control-sm" formControlName={{r.valor}}></td>
             </tr>           
           </table>          
-          <input id="button" type="button" class="btn btn-outline-danger botao" (click)="prosseguir()" value="Prosseguir">
+          <input id="button" type="button" class="btn btn-danger botao" (click)="prosseguir()" value="Prosseguir">
         </div>
       </form>
 
@@ -43,7 +43,7 @@
           <div class="row px-4">
             <button class="btn btn-outline-danger botao" (click)="refazer()"><fa-icon [icon]="faRedo"></fa-icon>Refazer</button>
             <button id="finalizar" class="btn btn-danger botao" (click)="finalizar()">Finalizar</button>
-            <button class="btn btn-danger botao ml-2" (click)="share()"><fa-icon [icon]="faShare"></fa-icon></button>
+            <button class="btn btn-danger botao ml-2" (click)="share()"><fa-icon [icon]="faDownload"></fa-icon></button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.io.widoctor;
 
 import android.os.Bundle;
 
